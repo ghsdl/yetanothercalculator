@@ -1,8 +1,12 @@
 .buttonsContainer {
+  height: 85%;
+  padding: 20px 20px 20px 20px;
   background-color: #41E3B9;
   border-radius: 30px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-gap: 10px;
+  align-items: center;
+  justify-items: center;
 }

@@ -1,6 +1,8 @@
 .screenContainer {
-  color: #F7F7F9;
-  background: #404263;
+  height: 15%;
+  width: 100%;
+  padding: 0px 30px 0px 30px;
+  margin: 0px 0px 20px 0px;
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -8,4 +10,6 @@
   font-weight: bold;
   font-size: 36px;
   box-sizing: border-box;
+  color: #F7F7F9;
+  background: #404263;
 }

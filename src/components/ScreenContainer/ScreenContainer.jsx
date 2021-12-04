@@ -1,7 +1,7 @@
 import './ScreenContainer.css';
 
 const ScreenContainer = ({ value }) => {
-  return <p className='screenContainer'>{value}</p>;
+  return <div className='screenContainer'>{value}</div>;
 };
 
 export default ScreenContainer;
