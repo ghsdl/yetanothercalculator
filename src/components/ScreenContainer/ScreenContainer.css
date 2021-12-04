@@ -1,0 +1,11 @@
+.screenContainer {
+  color: #F7F7F9;
+  background: #404263;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: bold;
+  font-size: 36px;
+  box-sizing: border-box;
+}
