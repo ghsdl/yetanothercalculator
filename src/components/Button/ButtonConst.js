@@ -1,5 +1,5 @@
 const BUTTON_VALUES = [
-  'C',
+  'c',
   '+-',
   '%',
   '/',

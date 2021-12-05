@@ -1,23 +1,40 @@
+import React, { useState } from 'react';
 import MainContainer from './components/MainContainer/MainContainer.jsx';
 import ScreenContainer from './components/ScreenContainer/ScreenContainer.jsx';
 import ButtonsContainer from './components/ButtonsContainer/ButtonsContainer.jsx';
 import Button from './components/Button/Button.jsx';
 import { BUTTON_VALUES } from './components/Button/ButtonConst.js';
+import {
+  numberHandler,
+  resetHandler,
+} from './components/Button/ButtonUtils.js';
 
 const App = () => {
+  let [formula, setFormula] = useState({
+    operator: '',
+    number: 0,
+    result: 0,
+  });
+  console.log('🎄 ~ App ~ formula', formula);
   return (
     <MainContainer>
-      <ScreenContainer value='0' />
+      <ScreenContainer
+        // if number exists then number, else result if '=' is pressed
+        value={formula.number ? formula.number : formula.result}
+      />
       <ButtonsContainer>
-        {BUTTON_VALUES.map((buttonvalue, index) => {
+        {BUTTON_VALUES.map((buttonValue, index) => {
           return (
             <Button
               key={index}
-              className={buttonvalue === '=' ? 'equals' : ''}
-              value={buttonvalue}
-              onClick={() => {
-                console.log(`j'ai cliqué sur le button ${buttonvalue}.`);
-              }}
+              className={buttonValue === '=' ? 'equals' : ''}
+              value={buttonValue}
+              // TODO: if/else statements to handle functions from utils file
+              onClick={() =>
+                buttonValue === 'C'
+                  ? resetHandler(formula, setFormula)
+                  : numberHandler(buttonValue, formula, setFormula)
+              }
             />
           );
         })}
