@@ -1,8 +1,8 @@
 import React from 'react';
 import MainContainer from './components/MainContainer/MainContainer.jsx';
 
-const App = () => {
+const Calculator = () => {
   return <MainContainer />;
 };
 
-export default App;
+export default Calculator;

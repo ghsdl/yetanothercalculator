@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { BUTTON_VALUES } from '../Button/ButtonConst.js';
-import Button from '../Button/Button.jsx';
 import ScreenContainer from '../ScreenContainer/ScreenContainer.jsx';
 import ButtonsContainer from '../ButtonsContainer/ButtonsContainer.jsx';
-import { resetHandler, numberHandler } from '../Button/ButtonUtils.js';
-import './MainContainer.css';
+import './MainContainer.scss';
 
 const MainContainer = () => {
   let [formula, setFormula] = useState({
@@ -12,29 +9,28 @@ const MainContainer = () => {
     number: 0,
     result: 0,
   });
+
+  const numClickHandler = (event) => {
+    const value = event.target.value;
+    setFormula({
+      ...formula,
+      number:
+        formula.number === 0 && value === '0'
+          ? '0'
+          : formula.number % 1 === 0
+          ? Number(formula.number + value)
+          : formula.number + value,
+      result: !formula.operator ? 0 : formula.result,
+    });
+  };
   return (
     <div className='mainContainer'>
       <ScreenContainer
-        // if number exists then number, else result if '=' is pressed
         value={formula.number ? formula.number : formula.result}
       />
-      <ButtonsContainer>
-        {BUTTON_VALUES.map((buttonValue, index) => {
-          return (
-            <Button
-              key={index}
-              className={buttonValue === '=' ? 'equals' : ''}
-              value={buttonValue}
-              // TODO: if/else statements to handle functions from utils file
-              onClick={() =>
-                buttonValue === 'C'
-                  ? resetHandler(formula, setFormula)
-                  : numberHandler(buttonValue, formula, setFormula)
-              }
-            />
-          );
-        })}
-      </ButtonsContainer>
+      <ButtonsContainer
+        onClick={(buttonValue) => numClickHandler(buttonValue)}
+      />
     </div>
   );
 };
