@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import ScreenContainer from '../ScreenContainer/ScreenContainer.jsx';
 import ButtonsContainer from '../ButtonsContainer/ButtonsContainer.jsx';
+import {
+  resetHandler,
+  decimalHandler,
+  operatorHandler,
+  equalHandler,
+  percentageHandler,
+  flipHandler,
+  numberHandler,
+} from './MainContainerUtils.js';
 import './MainContainer.scss';
 
 const MainContainer = () => {
@@ -9,97 +18,6 @@ const MainContainer = () => {
     number: 0,
     result: 0,
   });
-
-  // C BUTTON
-  const resetHandler = () => {
-    setFormula({
-      ...formula,
-      operator: '',
-      number: 0,
-      result: 0,
-    });
-  };
-
-  // 0 TO 9 BUTTONS
-  const numberHandler = (event) => {
-    const value = event.target.value;
-    const { operator, number, result } = formula;
-    setFormula({
-      ...formula,
-      number:
-        number === 0 && value === '0'
-          ? '0'
-          : number % 1 === 0
-          ? Number(number + value)
-          : number + value,
-      result: !operator ? 0 : result,
-    });
-  };
-
-  // . BUTTON
-  const decimalHandler = (event) => {
-    const value = event.target.value;
-    const { number } = formula;
-    setFormula({
-      ...formula,
-      number: !number.toString().includes('.') ? number + value : number,
-    });
-  };
-
-  // + – x / BUTTONS
-  const operatorHandler = (event) => {
-    const value = event.target.value;
-    const { number, result } = formula;
-    setFormula({
-      ...formula,
-      operator: value,
-      number: 0,
-      result: !result && number ? number : result,
-    });
-  };
-
-  // = BUTTON
-  const equalHandler = () => {
-    const { operator, number, result } = formula;
-    if (formula.operator && formula.number) {
-      const doTheMaths = (a, b, operator) =>
-        operator === '+'
-          ? a + b
-          : operator === '-'
-          ? a - b
-          : operator === 'x'
-          ? a * b
-          : a / b;
-
-      setFormula({
-        ...formula,
-        operator: '',
-        number: 0,
-        result: doTheMaths(result, number, operator),
-      });
-    }
-  };
-
-  // % BUTTON
-  const percentageHandler = () => {
-    const { number, result } = formula;
-    setFormula({
-      ...formula,
-      number: number / 100,
-      result: number * result,
-    });
-  };
-
-  // +- BUTTON
-  const flipHandler = () => {
-    const { number, result } = formula;
-    setFormula({
-      ...formula,
-      number: number ? number * -1 : 0,
-      result: result ? result * -1 : 0,
-      operator: '',
-    });
-  };
 
   return (
     <div className='mainContainer'>
@@ -110,21 +28,21 @@ const MainContainer = () => {
       <ButtonsContainer
         onClick={(buttonValue) => {
           buttonValue.target.value === 'c'
-            ? resetHandler()
+            ? resetHandler(setFormula, formula)
             : buttonValue.target.value === '.'
-            ? decimalHandler(buttonValue)
+            ? decimalHandler(buttonValue, setFormula, formula)
             : buttonValue.target.value === '+' ||
               buttonValue.target.value === '-' ||
               buttonValue.target.value === 'x' ||
               buttonValue.target.value === '/'
-            ? operatorHandler(buttonValue)
+            ? operatorHandler(buttonValue, setFormula, formula)
             : buttonValue.target.value === '='
-            ? equalHandler()
+            ? equalHandler(setFormula, formula)
             : buttonValue.target.value === '%'
-            ? percentageHandler()
+            ? percentageHandler(setFormula, formula)
             : buttonValue.target.value === '+-'
-            ? flipHandler()
-            : numberHandler(buttonValue);
+            ? flipHandler(setFormula, formula)
+            : numberHandler(buttonValue, setFormula, formula);
         }}
       />
     </div>
