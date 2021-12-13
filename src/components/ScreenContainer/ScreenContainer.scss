@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .screenContainer {
   height: 15%;
   width: 100%;
@@ -10,8 +12,8 @@
   font-weight: bold;
   font-size: 36px;
   box-sizing: border-box;
-  color: #F7F7F9;
-  background: #404263;
+  color: $color-white;
+  background: $color-light-blue;
   &--small {
     height: 15%;
     width: 100%;
@@ -24,7 +26,7 @@
     font-weight: bold;
     font-size: 26px;
     box-sizing: border-box;
-    color: #F7F7F9;
-    background: #404263;
+    color: $color-white;
+    background: $color-light-blue;
   }
 }

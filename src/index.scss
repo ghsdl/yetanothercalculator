@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 * {
@@ -11,5 +13,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #E86992;
+  background-color: $color-pink;
 }

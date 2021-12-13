@@ -1,7 +1,9 @@
+@import '../../variables.scss';
+
 .buttonsContainer {
   height: 85%;
   padding: 20px 20px 20px 20px;
-  background-color: #41E3B9;
+  background-color: $color-green;
   border-radius: 30px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -16,8 +18,8 @@ button {
   height: 50px;
   border-radius: 50px;
   border: none;
-  background-color: #F7EF34;
-  color: #404263;
+  background-color: $color-yellow;
+  color: $color-light-blue;
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
@@ -26,7 +28,7 @@ button {
 
 .equals {
   grid-column: 3 / 5;
-  color: #F7F7F9;
+  color: $color-white;
   width: 100%;
-  background-color: #E86992;
+  background-color: $color-pink;
 }

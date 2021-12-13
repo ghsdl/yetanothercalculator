@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .mainContainer {
   display: flex;
   flex-direction: column;
@@ -6,5 +8,5 @@
   height: 440px;
   padding: 20px 20px 20px 20px;
   border-radius: 30px;
-  background-color: #2C2D43;
+  background-color: $color-dark-blue;
 }
