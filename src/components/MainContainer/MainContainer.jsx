@@ -80,6 +80,27 @@ const MainContainer = () => {
     }
   };
 
+  // % BUTTON
+  const percentageHandler = () => {
+    const { number, result } = formula;
+    setFormula({
+      ...formula,
+      number: number / 100,
+      result: number * result,
+    });
+  };
+
+  // +- BUTTON
+  const flipHandler = () => {
+    const { number, result } = formula;
+    setFormula({
+      ...formula,
+      number: number ? number * -1 : 0,
+      result: result ? result * -1 : 0,
+      operator: '',
+    });
+  };
+
   return (
     <div className='mainContainer'>
       <ScreenContainer
@@ -99,6 +120,10 @@ const MainContainer = () => {
             ? operatorHandler(buttonValue)
             : buttonValue.target.value === '='
             ? equalHandler()
+            : buttonValue.target.value === '%'
+            ? percentageHandler()
+            : buttonValue.target.value === '+-'
+            ? flipHandler()
             : numberHandler(buttonValue);
         }}
       />
