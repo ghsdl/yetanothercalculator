@@ -24,6 +24,11 @@ button {
   font-weight: bold;
   cursor: pointer;
   outline: none;
+  &:hover {
+    background-color: $color-dark-blue;
+    color: $color-white;
+    transition: 0.2s;
+  }
 }
 
 .equals {
