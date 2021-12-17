@@ -1,7 +1,10 @@
 # YAC stands for Yet Another Calculator
 
 This project was made with my 🧠 in sweat pants
-you can find it here : http://yac.surge.sh/
+
+# url 
+
+this project has been deployed on surge, you can find it here : http://yac.surge.sh/
 
 # stack
 
