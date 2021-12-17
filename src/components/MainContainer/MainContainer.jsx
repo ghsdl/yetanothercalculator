@@ -22,9 +22,8 @@ const MainContainer = () => {
   return (
     <div className='mainContainer'>
       <ScreenContainer
-        value={formula.number ? formula.number : formula.result}
+        value={formula.number || formula.operator || formula.result}
       />
-
       <ButtonsContainer
         onClick={(buttonValue) => {
           buttonValue.target.value === 'c'
