@@ -1,27 +1,6 @@
 import React from 'react';
+import { BUTTON_VALUES } from './ButtonsContainerConst.js';
 import './ButtonsContainer.scss';
-
-const BUTTON_VALUES = [
-  'c',
-  '+-',
-  '%',
-  '/',
-  7,
-  8,
-  9,
-  'x',
-  4,
-  5,
-  6,
-  '-',
-  1,
-  2,
-  3,
-  '+',
-  0,
-  '.',
-  '=',
-];
 
 const ButtonsContainer = ({ onClick }) => {
   return (
